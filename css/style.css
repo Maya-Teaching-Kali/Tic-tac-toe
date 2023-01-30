@@ -1,0 +1,12 @@
+.flex{
+    display: flex;
+    width: 400px;
+    height: 400px;
+    border: 2px solid black;
+    flex-wrap: wrap;
+    margin: auto;
+}
+body{
+    height: 400vh;
+    padding: 2em;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Transform</title>
+  </head>
+  <body>
+    <div class="flex"></div>
+  </body>
+  <script>
+    const h1Array = [];
+    const WinCheck = () => {
+      if (
+        (h1Array[0].innerText === "X" &&
+          h1Array[1].innerText === "X" &&
+          h1Array[2].innerText === "X") ||
+        (h1Array[3].innerText === "X" &&
+          h1Array[4].innerText === "X" &&
+          h1Array[5].innerText === "X") ||
+        (h1Array[6].innerText === "X" &&
+          h1Array[7].innerText === "X" &&
+          h1Array[8].innerText === "X") ||
+        (h1Array[0].innerText === "X" &&
+          h1Array[3].innerText === "X" &&
+          h1Array[6].innerText === "X") ||
+        (h1Array[1].innerText === "X" &&
+          h1Array[4].innerText === "X" &&
+          h1Array[7].innerText === "X") ||
+        (h1Array[2].innerText === "X" &&
+          h1Array[5].innerText === "X" &&
+          h1Array[8].innerText === "X") ||
+        (h1Array[0].innerText === "X" &&
+          h1Array[4].innerText === "X" &&
+          h1Array[8].innerText === "X") ||
+        (h1Array[6].innerText === "X" &&
+          h1Array[4].innerText === "X" &&
+          h1Array[2].innerText === "X")
+      ) {
+        setTimeout(() => {
+          alert(" X is the Winner!!!");
+          PrintGame();
+        }, 10);
+      }
+      if (
+        (h1Array[0].innerText === "O" &&
+          h1Array[1].innerText === "O" &&
+          h1Array[2].innerText === "O") ||
+        (h1Array[3].innerText === "O" &&
+          h1Array[4].innerText === "O" &&
+          h1Array[5].innerText === "O") ||
+        (h1Array[6].innerText === "O" &&
+          h1Array[7].innerText === "O" &&
+          h1Array[8].innerText === "O") ||
+        (h1Array[0].innerText === "O" &&
+          h1Array[3].innerText === "O" &&
+          h1Array[6].innerText === "O") ||
+        (h1Array[1].innerText === "O" &&
+          h1Array[4].innerText === "O" &&
+          h1Array[7].innerText === "O") ||
+        (h1Array[2].innerText === "O" &&
+          h1Array[5].innerText === "O" &&
+          h1Array[8].innerText === "O") ||
+        (h1Array[0].innerText === "O" &&
+          h1Array[4].innerText === "O" &&
+          h1Array[8].innerText === "O") ||
+        (h1Array[6].innerText === "O" &&
+          h1Array[4].innerText === "O" &&
+          h1Array[2].innerText === "O")
+      ) {
+        setTimeout(() => {
+          alert(" O is the Winner!!!");
+          PrintGame();
+        }, 10);
+      }
+    };
+    const PrintGame = (boolTurn) => {
+      alert(`X Starts`);
+      for (let i = 0; i < 9; i++) {
+        h1Array.push(document.createElement("h1"));
+        h1Array[i].innerText = "-";
+        h1Array[i].style.display = "flex";
+        h1Array[i].style.alignItems = "center";
+        h1Array[i].style.justifyContent = "center";
+        h1Array[i].style.padding = "15px";
+        h1Array[i].style.width = "40px";
+        h1Array[i].style.height = "40px";
+        h1Array[i].style.margin = "25px";
+        h1Array[i].style.border = "5px solid black";
+        document.querySelector(".flex").appendChild(h1Array[i]);
+      }
+    };
+    console.log(h1Array);
+    let boolTurn = "X";
+    PrintGame("X");
+    // let flexbox = document.querySelector(".flex");
+
+    for (let index = 0; index < 9; index++) {
+      h1Array[index].addEventListener("click", (event) => {
+        if (event.target.innerText === "-" && boolTurn == "X") {
+          event.target.innerText = "X";
+          boolTurn = "O";
+        } else if (event.target.innerText === "-" && boolTurn == "O") {
+          event.target.innerText = "O";
+          boolTurn = "X";
+        }
+        WinCheck();
+      });
+    }
+  </script>
+</html>
